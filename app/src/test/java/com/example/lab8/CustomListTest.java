@@ -53,7 +53,11 @@ public class CustomListTest {
     }
 
     /**
-     *
+     * creates mock city
+     * adds mock city to list
+     * check that it exists in the list
+     * delete the city
+     * check that it does not exist in the list anymore
      */
     @Test
     public void deleteCityTest() {
@@ -63,6 +67,28 @@ public class CustomListTest {
         assertTrue(list.hasCity(city));
         list.deleteCity(city);
         assertFalse(list.hasCity(city));
+    }
+
+    /**
+     * checks that list starts empty
+     * adds city to list
+     * checks that list size is 1
+     * store a new city and create a pointer to it (variable) and add it to the list
+     * check that new list size is 2
+     * delete city pointed by variable
+     * check that new list size is 1
+     */
+    @Test
+    public void getCountTest() {
+        list = MockCityList();
+        assertEquals(0, list.getCount());
+        list.addCity(new City("Ottawa", "ON"));
+        assertEquals(1, list.getCount());
+        City city = new City("Vancouver", "BC");
+        list.addCity(city);
+        assertEquals(2, list.getCount());
+        list.deleteCity(city);
+        assertEquals(1, list.getCount());
     }
 
 }
